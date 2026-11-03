@@ -1,5 +1,6 @@
 import * as jogosModel from "../models/jogosModel.js";
-import {textoValido} from "../utils/validacoes.js";
+import {inteiroPositivo, textoValido} from "../utils/validacoes.js";
+
 
 export function listar (req, res, next) {
     jogosModel.listar((erro, resultado) => {

@@ -1,4 +1,4 @@
-export function validarId(req, res, next) {
+export default function validarId(req, res, next) {
     const id = Number(req.params.id);
 
     if (!/^\d+$/.test(req.params.id) || !Number.isSafeInteger(id) || id <= 0) {

@@ -12,12 +12,12 @@ export function buscarPorId(id, callback) {
 
 export function criar(dados, callback) {
     const sql = "INSERT INTO jogadores (nome, email, nickname) VALUES (?, ?, ?)";
-    conexao.query(sql,[dados.nome, dados.pais], callback);
+    conexao.query(sql,[dados.nome, dados.email, dados.nickname], callback);
 };
 
 export function atualizar(id, dados, callback) {
     const sql = "UPDATE jogadores SET nome = ?, email = ?, nickname = ? WHERE id = ?";
-    conexao.query(sql,[id], callback);
+    conexao.query(sql,[dados.nome, dados.email, dados.nickname, id], callback);
 };
 
 export function excluir(id, callback) {

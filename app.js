@@ -7,8 +7,6 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import conexao from "./db.js";
-import {textoValido, inteiroPositivo} from "./src/utils/validacoes.js";
-import {validarId} from "./src/middlewares/validarId.js";
 import {tratarErro} from "./src/middlewares/tratarErro.js";
 
 import estudioRoute from "./src/routes/estudioRoute.js";
