@@ -7,6 +7,8 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import conexao from "./db.js";
+
+
 import {tratarErro} from "./src/middlewares/tratarErro.js";
 
 import estudioRoute from "./src/routes/estudioRoute.js";
