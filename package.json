@@ -12,9 +12,9 @@
     "url": "git+https://github.com/abacaki/GameHUB.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Yuri Saito Mena",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/abacaki/GameHUB/issues"
   },

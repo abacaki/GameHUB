@@ -1,7 +1,12 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const conexao = require("./db.js");
+// require("dotenv").config();
+// const express = require("express");
+// const cors = require("cors");
+// const conexao = require("./db.js");
+
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import conexao from "./db.js";
 
 const app = express();
 const PORTA = Number(process.env.PORTA || 3000);
