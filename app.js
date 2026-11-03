@@ -1,24 +1,37 @@
 require("dotenv").config();
 const express = require("express");
 const conexao = require("./db.js");
-
 const PORTA = Number(process.env.PORTA);
 const app = express();
+
+function validarId(req, res, next){
+    const id = Number(req.params.id);
+    if(!/^\id+$/.test(req.params.id) || !Number.isSafeInteger(id) || id < 0){
+        return res.status(400).json({erro: "O id deve ser um número inteiro positivo"});
+    }
+    req.id = id;
+    next();
+}
 
 app.get("/", (req, res) => {
     res.status(200).json({ mensagem: "API funcionando" });
 });
 
-app.get("/estudios", (req, res) => {
+app.get("/estudios", (req, res, next) => {
     conexao.query("SELECT * FROM estudios ORDER BY id", (erro, resultado)=>{
-        if(erro)return(erro);
+        if(erro)return next(erro);
         return res.status(200).json(resultado);
     })
 });
 
-app.get("/estudios/:id", (req, res) => {});
+app.get("/estudios/:id", validarId, (req, res, next) => {
+     conexao.query("SELECT * FROM estudios WHERE id=?",[req.id], (erro, resultado)=>{
+        if(erro)return next(erro);
+        return res.status(200).json(resultado);
+    })
+});
 
-app.post("/estudios", (req, res)=>{});
+app.post("/estudios", (req, res, next)=>{});
 
 app.put("/estudios/:id", (req, res)=>{});
 
