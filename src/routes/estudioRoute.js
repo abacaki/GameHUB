@@ -4,10 +4,10 @@ import {validarId} from "../middlewares/validarId.js";
 
 const router = Router();
 
-app.get("/estudios", estudioController.listar);
-app.get("/estudios/:id", validarId, estudioController.buscarPorId);
-app.post("/estudios", estudioController.criar);
-app.put("/estudios/:id", validarId, estudioController.atualizar);
-app.delete("/estudios/:id", validarId, estudioController.excluir);
+router.get("/estudios", estudioController.listar);
+router.get("/estudios/:id", validarId, estudioController.buscarPorId);
+router.post("/estudios", estudioController.criar);
+router.put("/estudios/:id", validarId, estudioController.atualizar);
+router.delete("/estudios/:id", validarId, estudioController.excluir);
 
 export default router;

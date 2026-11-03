@@ -61,7 +61,7 @@ export function atualizar (req, res, next) {
 };
 
 export function excluir(req, res, next) {
-    conexao.query(req.id, (erro, resultado) => {
+    jogosModel.excluir(req.id, (erro, resultado) => {
         if (erro) return next(erro);
         if (resultado.affectedRows === 0) {
             return res.status(404).json({ erro: "Jogo não encontrado" });
