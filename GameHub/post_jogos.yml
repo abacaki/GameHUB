@@ -5,7 +5,16 @@ info:
 
 http:
   method: POST
-  url: http://localhost:3000/estudios/1
+  url: http://localhost:3000/jogos
+  body:
+    type: json
+    data: |-
+      {
+          "id": 4,
+          "titulo": "teste3",
+          "ano_lancamento": 2025,
+          "estudio_id": 1
+        }
   auth: inherit
 
 settings:

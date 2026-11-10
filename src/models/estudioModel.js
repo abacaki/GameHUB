@@ -21,6 +21,6 @@ export function atualizar(id, dados, callback) {
 };
 
 export function excluir(id, callback) {
-    const sql = "DELETE FROM jogadores WHERE id = ?";
+    const sql = "DELETE FROM estudios WHERE id = ?";
     conexao.query(sql,[id], callback);
 };

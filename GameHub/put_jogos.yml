@@ -5,14 +5,14 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/jogos/1
+  url: http://localhost:3000/jogos/4
   body:
     type: json
     data: |-
       {
         "titulo": "jogo legal",
         "ano_lancamento": 2026,
-        "estudio_id": 1 
+        "estudio_id": 1
       }
   auth: inherit
 

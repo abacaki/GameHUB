@@ -1,4 +1,4 @@
-import * as estudioModel from "../models/jogadoresModel.js";
+import * as jogadoresModels from "../models/jogadoresModel.js";
 import {textoValido} from "../utils/validacoes.js";
 
 export function listar(req, res, next) {
@@ -9,7 +9,7 @@ export function listar(req, res, next) {
 };
 
 export function buscarPorId(req, res, next) {
-    jogadores.buscarPorId(req.id, (erro, resultado) => {
+    jogadoresModels.buscarPorId(req.id, (erro, resultado) => {
         if (erro) return next(erro);
         if (resultado.length === 0) {
             return res.status(404).json({ erro: "Jogador não encontrado" });
@@ -52,16 +52,16 @@ export function atualizar(req, res, next) {
     const dados = { nome: nome.trim(), email: email.trim(), nickname: nickname.trim() };
 
     // Consulta didática para confirmar que o registro existe antes de editar.
-    jogadoresModels.atualizar(req.id, (erro, registros) => {
-        if (erro) return next(erro);
-        if (registros.length === 0) {
-            return res.status(404).json({ erro: "Jogador não encontrado" });
-        }
-        jogadoresModels.atualizar(req.id, dados, (erro, resultado) => {
-            if (erro) return next(erro);
-            return res.status(200).json({ mensagem: "Jogador atualizado com sucesso" });
-        });
-    });
+jogadoresModels.atualizar(req.id, dados, (erro, resultado) => {
+    if (erro) return next(erro);
+    
+    // Se 0 linhas foram afetadas, significa que o ID não existia no banco
+    if (resultado.affectedRows === 0) {
+        return res.status(404).json({ erro: "Jogador não encontrado" });
+    }
+    
+    return res.status(200).json({ mensagem: "Jogador atualizado com sucesso" });
+});
 };
 
 export function excluir(req, res, next) {
